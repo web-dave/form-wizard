@@ -3,6 +3,7 @@ import {
   AbstractControl,
   FormGroup,
   NonNullableFormBuilder,
+  Validators,
 } from '@angular/forms';
 
 @Injectable({
@@ -11,7 +12,7 @@ import {
 export class FormdataService {
   private formData = this.builder.group({
     fall: this.builder.group({
-      id: '',
+      id: ['', [Validators.required]],
       name: '',
     }),
     daten: this.builder.group({

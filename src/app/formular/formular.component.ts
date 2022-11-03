@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormArray, FormGroup } from '@angular/forms';
 import { FormdataService } from '../formdata.service';
 
 @Component({
@@ -12,5 +12,13 @@ export class FormularComponent {
   constructor(private service: FormdataService) {
     this.formData = this.service.getForm();
     this.formData.valueChanges.subscribe((data) => console.log(data));
+  }
+  foo() {
+    return (
+      this.formData.dirty ||
+      this.formData.get('fall')?.dirty ||
+      this.formData.get('daten')?.dirty ||
+      (this.formData.get('dokumente') as FormArray)?.length >= 1
+    );
   }
 }
