@@ -1,0 +1,14 @@
+<form [formGroup]="fgroup">
+  <fieldset formArrayName="dokumente">
+    <legend>Dokumente</legend>
+    <input type="file" (change)="addFile($event)" />
+    <table>
+      <th>Name</th>
+      <th>Type</th>
+      <tr *ngFor="let file of farray.value">
+        <td>{{ file.name }}</td>
+        <td>{{ file.type }}</td>
+      </tr>
+    </table>
+  </fieldset>
+</form>
